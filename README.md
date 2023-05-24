@@ -1,2 +1,8 @@
 # code_switching
 Analysis of Spanish-English code-switching from the Miami Corpus.
+
+Authors: Valeria Pagliai & Josh Higdon 
+
+For our libraries and packages, we used NumPy, Pandas, Counter and NLTK to process the data. The first step was to remove all the punctuation listed as an item and the filler words from the elements included in the data. Secondly, since the tags provided included a translation of the word and extra detail that we considered not relevant for the analysis, we removed everything but the second element of this column. For the cases where there was a contraction, through if statements we considered various options: tag “N” for any proper noun, “V” for every verb (without its conjugation detail), and “element + V” if there was a contraction.  
+
+After getting a list with the tags only, we added this information as a new column to the database. For the third step, we grouped our information with its sentence identifier number, which allowed us to divide the elements into 3 different lists (by using NumPy); of sentences, of tags and of language. These lists were then transformed into lists of bigrams with NLTK. On the fourth place, we merged these lists into a list of tuples, to get the information as: [word1, word2, tag1, tag2, lang1, lang2]. With this, we found instances of codeswitching by iterating over the 5th and 6th element of every tuple and adding them to a new list. Finally, we got the 2nd and 3rd component to get our lists of tags. The same process was performed for each of the 10 files studied. At the end, Counter was used to get the number of appearances for each pair of tags. 
